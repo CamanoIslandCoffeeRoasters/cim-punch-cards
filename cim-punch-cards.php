@@ -4,7 +4,7 @@ Plugin Name: CIM Punch Cards
 Description: Manages Punch Cards
 Author: tobinfekkes
 Author URI: http://tobinfekkes.com
-Version: 0.1
+Version: 1.0
 */
 
 define( 'PUNCHCARD_PLUGIN_FILE', __FILE__ );
