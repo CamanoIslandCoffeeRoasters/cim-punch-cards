@@ -105,18 +105,20 @@ class Punch_Card {
 
     public static function get_punches_html($id = 0, $punches = 0) {
        $punches_html = '';
+	   $button = '<span class="noselect dashicons dashicons-%s"></span>';
+
+	   $minus = sprintf($button, "minus remove" );
+
+	   if ($punches == 6) {
+		   $plus = sprintf($button, "yes complete");
+	   } else {
+		   $plus = sprintf($button, "plus add");
+	   }
 
        for ($x=0; $x < 6; $x++) {
            $stars = ($x < $punches) ? "filled" : "empty";
            $punches_html .= "<span style='font-size:1.8em;margin: 0 2px;' class='dashicons dashicons-star-$stars'></span>";
        }
-
-       $minus = '<span style="font-size:1.8em;margin-top:0px;margin-right:12px;color:red;cursor:pointer;" class="noselect remove dashicons dashicons-minus"></span>';
-	   if ($punches == 6) {
-		   $plus = '<span style="font-size:1.8em;margin-top:0px;margin-left:12px;color:green;cursor:pointer;" class="noselect complete dashicons dashicons-yes"></span>';
-	   } else {
-	       $plus = '<span style="font-size:1.8em;margin-top:0px;margin-left:12px;color:green;cursor:pointer;" class="noselect add dashicons dashicons-plus"></span>';
-	   }
 
        $response = sprintf("<div id='%d' data-punches='%d'>%s %s %s</div>", $id, $punches, $minus, $punches_html, $plus);
 

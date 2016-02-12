@@ -40,3 +40,17 @@ table.dataTable thead .sorting_desc_disabled { background: url("../images/sort_d
     position: relative;
     text-decoration: none;
 }
+
+.dashicons {
+    font-size:1.8em;
+    margin-top:0px;
+    margin-right:12px;
+    cursor:pointer;
+}
+
+.dashicons-plus {
+    color:green;
+}
+.dashicons-minus {
+    color:red;
+}
