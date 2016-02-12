@@ -48,7 +48,7 @@ table.dataTable thead .sorting_desc_disabled { background: url("../images/sort_d
     cursor:pointer;
 }
 
-.dashicons-plus {
+.dashicons-plus, .dashicons-yes {
     color:green;
 }
 .dashicons-minus {

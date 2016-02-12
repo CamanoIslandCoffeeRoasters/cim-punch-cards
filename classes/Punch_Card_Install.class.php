@@ -15,8 +15,8 @@
                                 `card_name`     varchar(255) DEFAULT NULL,
                                 `card_email`    text DEFAULT NULL,
                                 `card_phone`    varchar(255) DEFAULT NULL,
-                                `card_punches`  int(10) DEFAULT NULL,
-                                `card_completed`int(10) DEFAULT NULL,
+                                `card_punches`  int(10) DEFAULT '0',
+                                `card_completed`int(10) DEFAULT '0',
                                 UNIQUE KEY (`card_id`)
                             );";
 

@@ -77,7 +77,7 @@ class Punch_Card {
 	}
 
 
-	public function add_punch_card($card_array) {
+	public static function add_punch_card($card_array) {
 		if (!$card_array) return;
 
 		global $wpdb;
