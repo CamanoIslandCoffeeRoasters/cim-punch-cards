@@ -25,7 +25,7 @@ if ( ! class_exists('Punch_Cards')) {
 
             add_action( 'init', array(&$this, 'include_template_functions'), 20 );
 
-            add_action('plugins_loaded', array( &$this, 'punch_cards_css_and_js'), 10);
+            add_action('admin_enqueue_scripts', array( &$this, 'punch_cards_css_and_js'), 10);
         }
 
 

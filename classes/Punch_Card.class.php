@@ -166,7 +166,7 @@ class Punch_Card {
 
 	// If we have a number longer than 11 digits cut the string down to only 11
 	// This is also only ran if we want to limit only to 11 characters
-	if ($trim == true && strlen($phone)>11) {
+	if (strlen($phone)>11) {
 		$phone = substr($phone, 0, 11);
 	}
 
