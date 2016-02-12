@@ -12,6 +12,7 @@ define( 'PUNCHCARD_PLUGIN_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) 
 
 $plugin_path = untrailingslashit( plugin_dir_path( __FILE__ ) );
 require($plugin_path.'/classes/Punch_Card.class.php');
+require($plugin_path.'/classes/Punch_Card_Install.class.php');
 
 if ( ! class_exists('Punch_Cards')) {
 
@@ -20,6 +21,7 @@ if ( ! class_exists('Punch_Cards')) {
         public function __construct() {
 
             $this->punch_card = new Punch_Card();
+            $this->install    = new Punch_Card_Install();
 
             add_action( 'init', array(&$this, 'include_template_functions'), 20 );
 
