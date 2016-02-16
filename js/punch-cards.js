@@ -62,4 +62,29 @@ jQuery(document).ready(function($){
             $('#add_punch_card_form input[name^="card"]').val('');
         });
     });
+
+    $('#punch-cards-table').on('click', '.punch-card-meta', function() {
+        card_id = $(this).data('card_id');
+        card_name = $(this).text();
+        console.log(card_name);
+        safeUrl = '/wp-admin/admin-ajax.php';
+        $.ajax({
+            url: safeUrl,
+            data: { action: 'get_punch_card_meta', card_id:card_id },
+            dataType: 'JSON',
+            type: 'POST'
+        })
+        .done(function(response) {
+            $('#TB_title').empty().append('<span style="font-size:15px;font-weight:900;margin-top:3px;">&nbsp;'+card_name+'</span>');
+            $('#punch_card_meta_table tbody tr').remove();
+            console.log(response);
+            if (response.punches == 'true') {
+                $.each(response.punches_meta, function(key, value) {
+                    $('#punch_card_meta_table tbody').append('<tr><td>'+value.punch_number+'</td><td>'+value.punch_dates+'</td></tr>');
+                });
+            }else{
+                $('#punch_card_meta_table tbody').append('<tr><td colspan="2">No punches for '+card_name+'</td></tr>');
+            }
+        });
+    });
 });

@@ -7,7 +7,7 @@
         <div class="alignleft actions bulkactions">
         </div>
     </div>
-    <table id="punch-cards-table" class="widefat cbw-admin-table" cellspacing="0">
+    <table id="punch-cards-table" class="widefat striped" cellspacing="0">
         <thead>
             <tr>
                 <th id="columnname" class="column-card-id column-title" scope="col">ID</th>
@@ -49,4 +49,17 @@
             </tbody>
         </table>
     </form>
+</div>
+
+<div id="get-punch-card-meta" style="display:none;">
+    <table id="punch_card_meta_table"class="widefat striped fixed">
+        <thead>
+            <tr>
+                <th>Punch</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>

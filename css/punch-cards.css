@@ -5,16 +5,10 @@ table.dataTable thead .sorting_asc { background: url("../images/sort_asc.png") n
 table.dataTable thead .sorting_desc { background: url("../images/sort_desc.png") no-repeat center right;}
 table.dataTable thead .sorting_asc_disabled { background: url("../images/sort_asc_disabled.png") no-repeat center right; }
 table.dataTable thead .sorting_desc_disabled { background: url("../images/sort_desc_disabled.png") no-repeat center right;}
-#subscriptions-table_wrapper { position: relative;margin-top: 20px; }
-.dt-search-box 				 { padding-bottom:10px; }
-#subscriptions-table_info 	{ margin-top: 10px; }
 
-.subscription-type-filter { float: left; }
-.subscription-type-filter label { float: left;line-height: 28px;margin-right: 6px;}
-
-
-.cbw-admin-table tr:nth-child(even) { background: #f9f9f9 }
-.cbw-admin-table tr:nth-child(odd) { background: #fff }
+#punch-cards-table_wrapper { position: relative;margin-top: 20px; }
+#punch-cards-table_wrapper .dt-search-box { top:0;position:relative;padding-bottom:10px; }
+#punch-cards-table_info 	{ margin-top: 10px; }
 
 #punch-cards-table_paginate {
     border-radius: 4px;

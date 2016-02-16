@@ -30,7 +30,8 @@ class Punch_Card {
 		function update_punch_card_ajax() {
 
 	        global $wpdb;
-	        $table = $wpdb->prefix . "punch_cards";
+	        $punch_cards_table = $wpdb->prefix . "punch_cards";
+			$punch_cards_meta_table = $wpdb->prefix . "punch_cards_meta";
 
 	 	   	$card_action = $_POST['card_action'];
 	 	   	$card_id     = $_POST['card_id'];
@@ -58,10 +59,18 @@ class Punch_Card {
 			$punches_array['card_punches'] = $punches;
 
 			$wpdb->update(
-			     $table,
+			     $punch_cards_table,
 			     $punches_array,
 			     array('card_id' => $card_id)
-			 );
+			);
+
+ 			$wpdb->insert(
+ 			     $punch_cards_meta_table,
+ 			     array('card_id' => $card_id,
+				 	   'punch_number' => $punches,
+				 	   'punch_date'	=> current_time('mysql')
+			 	 )
+ 			);
 
 			 echo json_encode(
 						 array(
@@ -74,6 +83,32 @@ class Punch_Card {
 
 			 wp_die();
 	 	}
+
+		add_action( 'wp_ajax_get_punch_card_meta', 'get_punch_card_meta_ajax' );
+        add_action( 'wp_ajax_nopriv_get_punch_card_meta', 'get_punch_card_meta_ajax' );
+
+		function get_punch_card_meta_ajax() {
+			global $wpdb;
+
+			$punch_cards_meta_table = $wpdb->prefix .'punch_cards_meta';
+			$card_id = $_POST['card_id'];
+
+			$punches_meta = $wpdb->get_results("SELECT punch_number, DATE_FORMAT(punch_date,'%M %D, %Y') as punch_dates
+												FROM $punch_cards_meta_table
+												WHERE card_id = $card_id
+												ORDER BY punch_date DESC"
+											);
+
+			$punches = (count($punches_meta) > 0) ? 'true' : 'false';
+			echo json_encode(
+						array(
+							'punches_meta' => $punches_meta,
+							'punches' => $punches
+						)
+					);
+			wp_die();
+
+		}
 	}
 
 
