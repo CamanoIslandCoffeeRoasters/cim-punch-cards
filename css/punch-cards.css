@@ -48,3 +48,20 @@ table.dataTable thead .sorting_desc_disabled { background: url("../images/sort_d
 .dashicons-minus {
     color:red;
 }
+.punch-card-title {
+    margin-top: 5px;
+    font-size:15px;
+    font-weight:900;
+}
+.delete-punch-card {
+    float: right;
+    margin-right: 30px;
+    color: red;
+    /*font-size: 1.1em;*/
+    font-weight: bold;
+    text-decoration: underline;
+}
+.edit-punch-card {
+    font-size: 13px;
+    cursor: pointer;
+}

@@ -16,7 +16,10 @@
     // parameter represents the DataTables column identifier. In this case simple
     // indexes
     $columns = array(
-        array( 'db' => 'card_id',      'dt' => 0 ),
+        array( 'db' => 'card_id',      'dt' => 0,
+               'formatter' => function($id) {
+                   return sprintf('<span id="punch_card_%s">%s</span>', $id, $id );
+                } ),
         array( 'db' => 'card_name',    'dt' => 1,
                'formatter' => function($id, $row) {
                    return sprintf('<a href="#TB_inline?&width=400&height200&inlineId=get-punch-card-meta" class="thickbox punch-card-meta" data-card_id="%d">%s</a>', $row[0], $id );

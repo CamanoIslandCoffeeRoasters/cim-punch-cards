@@ -2,7 +2,7 @@
 
 <div class="wrap">
     <h2>Punch Cards
-    <a href="#TB_inline?&width=400&height200&inlineId=add-punch-card-pop" class="thickbox add-new-h2">Add Punch Card</a></h2>
+    <a href="#TB_inline?&width=400&height200&inlineId=add-punch-card-pop" class="thickbox add-new-h2 add-new-punch-card">Add Punch Card</a></h2>
     <div class="tablenav top">
         <div class="alignleft actions bulkactions">
         </div>
@@ -28,15 +28,18 @@
             <tbody>
                 <tr class="add_user user_field">
                     <td>
-                        <input type="text" name="card[first_name]" id="sub_first_name" placeholder="First Name" required="required" />
-                        <input type="text" name="card[last_name]" id="sub_last_name" placeholder="Last Name" required="required" />
+                        <input type="text" name="card[card_name]" id="name" placeholder="Name" required="required" />
                     </td>
                 </tr>
                 <tr class="add_user user_field">
                     <td>
-                        <input type="email" name="card[email]" id="sub_email" placeholder="Email" required="required" />
+                        <input type="email" name="card[card_email]" id="email" placeholder="Email" />
 
-                        <input type="text" name="card[phone]" id="sub_email" placeholder="Phone" required="required" pattern="[0-9]{10}" />
+                    </td>
+                </tr>
+                <tr class="add_user user_field">
+                    <td>
+                        <input type="text" name="card[card_phone]" id="phone" placeholder="Phone" pattern="[0-9]{10}" />
                     </td>
                 </tr>
                 <tr>

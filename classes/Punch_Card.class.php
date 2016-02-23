@@ -9,6 +9,29 @@ class Punch_Card {
 	}
 
 	public function plugins_loaded() {
+
+		add_action( 'wp_ajax_edit_punch_card', 'edit_punch_card_ajax' );
+        add_action( 'wp_ajax_nopriv_edit_punch_card', 'edit_punch_card_ajax' );
+
+		function edit_punch_card_ajax() {
+			global $wpdb;
+			$card_data = array();
+
+			foreach ($_POST['card'] as $key => $value ) {
+				$card_data[$key] = $value;
+			}
+			$card_id = $card_data['card_id'];
+
+			unset($card_data['card_id']);
+
+			$wpdb->update($wpdb->prefix.'punch_cards', $card_data, array('card_id' => $card_id));
+			echo json_encode($card_data);
+
+			// echo Punch_Card::add_punch_card($card_data);
+
+			wp_die();
+		}
+
 		add_action( 'wp_ajax_add_punch_card', 'add_punch_card_ajax' );
         add_action( 'wp_ajax_nopriv_add_punch_card', 'add_punch_card_ajax' );
 
@@ -107,10 +130,26 @@ class Punch_Card {
 						)
 					);
 			wp_die();
+		}
 
+		add_action( 'wp_ajax_delete_punch_card', 'delete_punch_card_ajax' );
+        add_action( 'wp_ajax_nopriv_delete_punch_card', 'delete_punch_card_ajax' );
+
+		function delete_punch_card_ajax() {
+			global $wpdb;
+
+			$card_id = $_POST['card_id'];
+			$punch_cards_table = $wpdb->prefix .'punch_cards';
+			$punch_cards_meta_table = $wpdb->prefix .'punch_cards_meta';
+
+			if (!$card_id) return;
+
+			$wpdb->delete($punch_cards_table, 	   array('card_id' => $card_id));
+			$wpdb->delete($punch_cards_meta_table, array('card_id' => $card_id));
+
+			wp_die();
 		}
 	}
-
 
 	public static function add_punch_card($card_array) {
 		if (!$card_array) return;
@@ -120,14 +159,9 @@ class Punch_Card {
 
 		return $wpdb->insert(
 				$table,
-				array(
-
-					'card_name' => $card_array['first_name'] . ' ' . $card_array['last_name'],
-					'card_email' => $card_array['email'],
-					'card_phone' => $card_array['phone']
-				)
+				$card_array
 			);
-	}
+	} // End add_punch_card method
 
     public static function get_punch_card($id) {
         global $wpdb;
