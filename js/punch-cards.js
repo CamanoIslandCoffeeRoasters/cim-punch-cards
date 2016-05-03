@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+jQuery(document).ready(function($) {
     safeUrl = '/wp-content/plugins/cim-punch-cards/js/ajax/get-punch-cards.php';
     var table = $('#punch-cards-table').DataTable( {
         "dom": '<".dt-search-box"f>t<"F"ip>',
@@ -19,9 +19,14 @@ jQuery(document).ready(function($){
         },1000);
     });
 
+    // Hide the 6th column from display, but we still need it search for so we can filter out the disabled ones
+    table.column(6).visible(false);
+    // Filter out punch cards that are disabled
+    table.column(6).search('1').draw();
+
     $('.dt-search-box input').attr('placeholder', 'Search Punch Cards');
 
-    $('#punch-cards-table').on('click', '.add, .remove, .complete', function(){
+    $('#punch-cards-table').on('click', '.add, .remove, .complete', function() {
         row = $(this).parent('div');
         id = $(this).parent('div').attr('id');
         card_action = ($(this).hasClass('add') == true) ? 'add' : ($(this).hasClass('remove') == true) ? 'remove' : 'complete';
@@ -103,6 +108,7 @@ jQuery(document).ready(function($){
             },1000);
         });
     });
+
     $('body').on('click', '.edit-punch-card', function(){
         card_id = $(this).parent('div').data('card-id');
         punch_card = $('#punch_card_'+card_id).parents('tr');

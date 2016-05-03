@@ -27,8 +27,6 @@ class Punch_Card {
 			$wpdb->update($wpdb->prefix.'punch_cards', $card_data, array('card_id' => $card_id));
 			echo json_encode($card_data);
 
-			// echo Punch_Card::add_punch_card($card_data);
-
 			wp_die();
 		}
 
@@ -143,9 +141,8 @@ class Punch_Card {
 			$punch_cards_meta_table = $wpdb->prefix .'punch_cards_meta';
 
 			if (!$card_id) return;
-
-			$wpdb->delete($punch_cards_table, 	   array('card_id' => $card_id));
-			$wpdb->delete($punch_cards_meta_table, array('card_id' => $card_id));
+			// Set status column to false
+			$wpdb->update($punch_cards_table, array('card_status' => 0), array('card_id' => $card_id));
 
 			wp_die();
 		}

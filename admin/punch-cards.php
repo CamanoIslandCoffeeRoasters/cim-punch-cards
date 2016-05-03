@@ -16,6 +16,7 @@
                 <th id="columnname" class="column-card-phone column-title" scope="col">Phone</th>
                 <th id="columnname" class="column-card-punches column-title" scope="col">Punches</th>
                 <th id="columnname" class="column-card-completed column-title" scope="col">Completed</th>
+                <th id="columnname" class="column-card-status column-title" scope="col">Status</th>
             </tr>
         </thead>
     </table>

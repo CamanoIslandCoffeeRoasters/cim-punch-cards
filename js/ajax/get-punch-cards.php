@@ -33,7 +33,8 @@
                'formatter' => function( $id, $row ) {
                    return Punch_Card::get_punches_html($row[0], $id);
                } ),
-        array( 'db' => 'card_completed', 'dt' => 5)
+        array( 'db' => 'card_completed', 'dt' => 5),
+        array( 'db' => 'card_status', 'dt' => 6)
     );
 
     // SQL server connection information

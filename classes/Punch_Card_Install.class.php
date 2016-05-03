@@ -20,6 +20,7 @@
                                 `card_phone`    varchar(255) DEFAULT NULL,
                                 `card_punches`  int(10) DEFAULT '0',
                                 `card_completed`int(10) DEFAULT '0',
+                                `card_status`   int(10) DEFAULT '1',
                                 UNIQUE KEY (`card_id`)
                             ) ENGINE=MYISAM;";
 
